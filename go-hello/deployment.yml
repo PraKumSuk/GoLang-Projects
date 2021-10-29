@@ -1,0 +1,21 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: go-hello
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: go-hello
+  template:
+    metadata:
+      labels:
+        name: go-hello
+    spec:
+      containers:
+      - name: application
+        image: praveespk/go-hello
+        imagePullPolicy: IfNotPresent
+        ports:
+          - containerPort: 3000
